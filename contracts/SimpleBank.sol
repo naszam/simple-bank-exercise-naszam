@@ -83,8 +83,8 @@ contract SimpleBank {
           then return the balance of the user */
            require(enrolled[msg.sender]);
            balances[msg.sender] += msg.value;
-	         emit LogDepositMade(msg.sender, msg.value);
-	         return balances[msg.sender];
+	   emit LogDepositMade(msg.sender, msg.value);
+           return balances[msg.sender];
     }
 
     /// @notice Withdraw ether from bank
@@ -97,11 +97,11 @@ contract SimpleBank {
            Subtract the amount from the sender's balance, and try to send that amount of ether
            to the user attempting to withdraw.
            return the user's balance.*/
-	          require(balances[msg.sender] >= withdrawAmount);
-	          balances[msg.sender] -= withdrawAmount;
-	          msg.sender.transfer(withdrawAmount);
-	          emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
-	          return balances[msg.sender];
+	   require(balances[msg.sender] >= withdrawAmount);
+	   balances[msg.sender] -= withdrawAmount;
+           msg.sender.transfer(withdrawAmount);	   
+           emit LogWithdrawal(msg.sender, withdrawAmount, balances[msg.sender]);
+           return balances[msg.sender];
     }
 
 }
